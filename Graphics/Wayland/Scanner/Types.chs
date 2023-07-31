@@ -5,9 +5,10 @@ import Language.Haskell.TH (Name)
 
 #include <wayland-util.h>
 
-{#context prefix="wl"#}
+{# context prefix="wl" #}
 
-data ServerClient = Server | Client  deriving (Eq)
+data ServerClient = Server | Client
+  deriving (Eq)
 
 -- | wayland-style interface name (e.g. wl_display)
 type InterfaceName = String

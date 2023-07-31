@@ -50,17 +50,22 @@ library
     Graphics.Wayland.Scanner.Types
   build-depends:
     base >=4.7 && <5,
+    text,
+    bytestring,
+    time,
+    transformers,
+    filepath,
     xml >=1.3 && <1.4,
     process >= 1.1 && < 2,
     template-haskell >= 2 && < 3,
     data-flags <0.1,
-    time,
-    transformers,
   build-tool-depends:
     c2hs:c2hs >=0.28,
   default-extensions: 
-    LambdaCase
     ForeignFunctionInterface
+    LambdaCase
+    NoFieldSelectors
+    OverloadedRecordDot
   default-language:   GHC2021
   cc-options:         -fPIC
   pkgconfig-depends:

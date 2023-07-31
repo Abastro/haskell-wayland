@@ -5,17 +5,13 @@ module Graphics.Wayland.Scanner (
   generateClientTypes,
   generateClientInternal,
   generateClientExports,
-
   generateServerTypes,
   generateServerInternal,
   generateServerExports,
-
   module Graphics.Wayland.Scanner.Types,
   module Graphics.Wayland.Scanner.Protocol,
-
-  CInterface(..)
-
-  ) where
+  CInterface(..),
+) where
 
 import Data.Functor ((<$>))
 import Data.Either (lefts, rights)
