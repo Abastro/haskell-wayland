@@ -25,7 +25,7 @@ import Graphics.Wayland.Scanner.Types
 
 
 registryBindName :: ProtocolName -> InterfaceName -> String
-registryBindName pname iname = "registryBind" ++ (capitalize $ haskifyInterfaceName pname iname)
+registryBindName pname iname = "registryBind" ++ capitalize (haskifyInterfaceName pname iname)
 
 requestInternalCName :: InterfaceName -> MessageName -> Name
 requestInternalCName iface msg = mkName $ iface ++ "_" ++ msg ++ "_request_binding"

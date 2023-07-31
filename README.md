@@ -1,3 +1,5 @@
+This is a fork of previously abandoned haskell-wayland.
+
 ## Notice (2015-12-06) ##
 I am not happy with these bindings and have started writing a [new](https://github.com/tulcod/sudbury) Haskell wayland interface. It is far from usable. If you want to start a project based on these bindings: I would advise you to wait for that new project to be at a further stage instead.
 

@@ -2,9 +2,7 @@ module Graphics.Wayland.Scanner.Protocol (
   readProtocol, parseFile
   ) where
 
-import Data.Functor
 import Data.Maybe
-import Data.Char
 import Text.XML.Light
 import System.Process
 import Language.Haskell.TH (mkName)
@@ -20,7 +18,7 @@ entry      = QName "entry"      Nothing Nothing
 arg        = QName "arg"        Nothing Nothing
 namexml    = QName "name"       Nothing Nothing
 version    = QName "version"    Nothing Nothing
-allow_null = QName "allow-null" Nothing Nothing
+allowNull = QName "allow-null" Nothing Nothing
 typexml    = QName "type"       Nothing Nothing
 value      = QName "value"      Nothing Nothing
 
@@ -45,8 +43,8 @@ parseInterface pname elt =
               "object" -> ObjectArg . mkName . interfaceTypeName pname <$> findAttr interface argelt
               "new_id" -> (\iname -> NewIdArg (mkName $ interfaceTypeName pname iname) iname) <$> findAttr interface argelt
               _ -> lookup argtypecode argConversionTable
-            let allowNull = fromMaybe False (read <$> capitalize <$> findAttr allow_null argelt)
-            return (msgname, argtype, allowNull)
+            let allow_null = maybe False (read . capitalize) (findAttr allowNull argelt)
+            return (msgname, argtype, allow_null)
 
       parseEnum enumelt =
         let enumname = fromJust $ findAttr namexml enumelt
@@ -84,6 +82,6 @@ readProtocol = do
 -- TODO move this into some pretty Setup.hs thing as soon as someone complains about portability
 figureOutWaylandDataDir :: IO String
 figureOutWaylandDataDir =
-  head <$> lines <$> readProcess "pkg-config" ["wayland-server", "--variable=pkgdatadir"] []
+  head . lines <$> readProcess "pkg-config" ["wayland-server", "--variable=pkgdatadir"] []
 
 protocolFile = "wayland.xml"
