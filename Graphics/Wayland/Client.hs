@@ -6,10 +6,10 @@ module Graphics.Wayland.Client (
   -- Expose scanned protocol
   module Graphics.Wayland.Internal.SpliceClient,
   module Graphics.Wayland.Internal.SpliceClientTypes,
-  ) where
+) where
 
 import Graphics.Wayland.Internal.Client
-import Graphics.Wayland.Internal.SpliceClient
-import Graphics.Wayland.Internal.SpliceClientTypes
 import Graphics.Wayland.Internal.Cursor
 import Graphics.Wayland.Internal.EGL
+import Graphics.Wayland.Internal.SpliceClient
+import Graphics.Wayland.Internal.SpliceClientTypes
